@@ -1,8 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useFeProblemsQuery } from "../react-components.d";
+import { useFeProblemsQuery, useFeSimilarsQuery } from "../react-components.d";
 import Content from "../composition/Content";
 import ProblemCard from "../component/ProblemCard";
+import { useQuery } from "@apollo/react-hooks";
+import { GET_SIMILAR_NUM } from "../apollo/store/interval.cache";
 const Warpper = styled.div`
   display: flex;
   position: relative;
@@ -50,11 +52,23 @@ export const EmptyContent = styled.div`
   line-height: 28px;
   color: #9f9f9f;
 `;
+const UnitNameBar = styled.div`
+  height: 36px;
+  font-size: 14px;
+  padding: 8px 25px;
+  line-height: 20px;
+  background: #fafafa;
+  color: #4c4c4c;
+`;
 export function Router() {
   const { data } = useFeProblemsQuery();
-  console.log("data", data);
+  const { data: simData } = useFeSimilarsQuery();
+  // console.log("data", data);
+  const { data: similarNumObj } = useQuery(GET_SIMILAR_NUM);
+
   return (
     <Warpper>
+      {console.log("similarNumObj.similarNum", similarNumObj)}
       <Content title="학습지 상세 편집">
         <>
           {data &&
@@ -63,6 +77,7 @@ export function Router() {
               return (
                 problem && (
                   <ProblemCard
+                    id={problem.id}
                     type={problem.problemType}
                     unit={problem.unitName}
                     count={index + 1}
@@ -76,11 +91,33 @@ export function Router() {
       </Content>
       <Divider> </Divider>
       <Content title="문항 교체/추가">
-        <EmptyContent>
-          <ButtonStyle>유사문항</ButtonStyle> 버튼을 누르면
-          <br />
-          해당 문제의 유사 문항을 볼 수 있습니다.
-        </EmptyContent>
+        {data && similarNumObj.similarNum == 0 ? (
+          <EmptyContent>
+            <ButtonStyle>유사문항</ButtonStyle> 버튼을 누르면
+            <br />
+            해당 문제의 유사 문항을 볼 수 있습니다.
+          </EmptyContent>
+        ) : (
+          <>
+            <UnitNameBar>{similarNumObj.unitName}</UnitNameBar>
+            {simData &&
+              simData.feSimilars &&
+              simData.feSimilars.map((problem, index) => {
+                return (
+                  problem && (
+                    <ProblemCard
+                      id={problem.id}
+                      type={problem.problemType}
+                      unit={problem.unitName}
+                      count={index + 1}
+                      problemURL={problem.problemURL}
+                      key={problem.id}
+                    />
+                  )
+                );
+              })}
+          </>
+        )}
       </Content>
     </Warpper>
   );

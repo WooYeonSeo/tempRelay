@@ -19,7 +19,11 @@ export const SE_PROBLEMS = gql`
     feSimilars {
       id
       unitCode
+      answerData
       problemLevel
+      problemType
+      problemURL
+      unitName
     }
   }
 `;

@@ -5,16 +5,8 @@ import gql from "graphql-tag";
 import link from "./Link";
 
 export interface DefaultCache {
-  interval: string;
-}
-
-export enum Interval {
-  year = "year",
-  month = "month",
-  day = "day",
-  hour = "hour",
-  minute = "minute",
-  second = "second"
+  similarNum: number;
+  unitName: string;
 }
 
 const cache = new InMemoryCache();
@@ -23,18 +15,24 @@ const client = new ApolloClient({
   link,
   typeDefs: gql`
     extend type Mutation {
-      changeInterval: void
+      changeSimilarNum: void
     }
   `,
   resolvers: {
     Query: {},
     Mutation: {
-      changeInterval: (
+      changeSimilarNum: (
         _: any,
-        { interval }: { interval: Interval },
+        { similarNum, unitName }: { similarNum: number; unitName: string },
         { cache }: { cache: any }
       ) => {
-        cache.writeData({ data: { interval } });
+        console.log("problemNum ", similarNum);
+        cache.writeData({
+          data: {
+            similarNum,
+            unitName
+          }
+        });
       }
     }
   }
@@ -42,7 +40,8 @@ const client = new ApolloClient({
 
 cache.writeData<DefaultCache>({
   data: {
-    interval: "hour"
+    similarNum: 0,
+    unitName: ""
   }
 });
 

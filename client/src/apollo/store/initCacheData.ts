@@ -1,3 +1,4 @@
 export interface DefaultCache {
-  interval: string;
+  similarNum: number;
+  unitName: string;
 }

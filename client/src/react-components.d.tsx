@@ -62,7 +62,7 @@ export type FeSimilarsQuery = (
   { __typename?: 'Query' }
   & { feSimilars?: Maybe<Array<Maybe<(
     { __typename?: 'Problem' }
-    & Pick<Problem, 'id' | 'unitCode' | 'problemLevel'>
+    & Pick<Problem, 'id' | 'unitCode' | 'answerData' | 'problemLevel' | 'problemType' | 'problemURL' | 'unitName'>
   )>>> }
 );
 
@@ -129,7 +129,11 @@ export const FeSimilarsDocument = gql`
   feSimilars {
     id
     unitCode
+    answerData
     problemLevel
+    problemType
+    problemURL
+    unitName
   }
 }
     `;

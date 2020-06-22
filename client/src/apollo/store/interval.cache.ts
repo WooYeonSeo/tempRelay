@@ -1,6 +1,12 @@
 import gql from "graphql-tag";
-export const GET_INTERVAL = gql`
+export const GET_SIMILAR_NUM = gql`
   {
-    interval @client
+    similarNum @client
+    unitName @client
+  }
+`;
+export const RESET_SIMILAR_NUMBER = gql`
+  mutation changeSimilarNum($similarNum: Int!, $unitName: String!) {
+    changeSimilarNum(similarNum: $similarNum, unitName: $unitName) @client
   }
 `;

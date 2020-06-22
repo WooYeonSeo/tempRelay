@@ -1,5 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import {
+  RESET_SIMILAR_NUMBER,
+  GET_SIMILAR_NUM
+} from "../../apollo/store/interval.cache";
 const Wrapper = styled.div`
   position: relative;
   border-bottom: 8px solid #f5f5f5;
@@ -59,9 +64,13 @@ export const ButtonStyle = styled.span`
   } */
 `;
 
-const RightButton = styled(ButtonStyle)`
+const RightButton = styled(ButtonStyle)<{ isSelected: boolean }>`
   float: right;
   margin: 5px 8px 5px 0;
+  ${props =>
+    props.isSelected &&
+    ` color: #ffffff;
+    background: #00abff;`}
 `;
 
 const QNumber = styled.p`
@@ -81,12 +90,20 @@ const ProblemImg = styled.img`
   background: blue;
 `;
 interface Problem {
+  id: number;
   type: string;
   unit: string;
   count: number;
   problemURL: string;
 }
-function ProblemCard({ type, unit, count, problemURL }: Problem) {
+function ProblemCard({ id, type, unit, count, problemURL }: Problem) {
+  const [changeSimliarNumber] = useMutation(RESET_SIMILAR_NUMBER);
+  const { data: similarNumObj } = useQuery(GET_SIMILAR_NUM);
+  const handleOnClick = (value: number, unit: string) => (
+    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    changeSimliarNumber({ variables: { similarNum: value, unitName: unit } });
+  };
   return (
     <Wrapper>
       <Header>
@@ -94,8 +111,13 @@ function ProblemCard({ type, unit, count, problemURL }: Problem) {
           <ProblemType>{type}</ProblemType>
           <ProblemUnit>{unit}</ProblemUnit>
 
-          <RightButton>삭제</RightButton>
-          <RightButton>유사문항</RightButton>
+          <RightButton isSelected={false}>삭제</RightButton>
+          <RightButton
+            onClick={handleOnClick(id, unit)}
+            isSelected={similarNumObj.similarNum == id}
+          >
+            유사문항
+          </RightButton>
         </Title>
       </Header>
       <ContentBox>

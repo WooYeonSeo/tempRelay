@@ -39,9 +39,6 @@ function Content({
   children: React.ReactElement;
   title: String;
 }) {
-  const { data } = useFeProblemsQuery();
-  console.log("data", data && data.feProblems);
-
   return (
     <Warpper>
       <Header>

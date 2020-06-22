@@ -1,21 +1,17 @@
-export enum Interval {
-  year = "year",
-  month = "month",
-  day = "day",
-  hour = "hour",
-  minute = "minute",
-  second = "second"
-}
-
 export const resolvers = {
   Query: {},
   Mutation: {
-    changeInterval: (
+    changeSimilarNum: (
       _: any,
-      { interval }: { interval: Interval },
+      { similarNum }: { similarNum: number },
       { cache }: { cache: any }
     ) => {
-      cache.writeData({ data: { interval } });
+      console.log("problemNum ", similarNum);
+      cache.writeData({
+        data: {
+          similarNum
+        }
+      });
     }
   }
 };
