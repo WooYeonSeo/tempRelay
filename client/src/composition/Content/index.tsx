@@ -18,6 +18,13 @@ const Warpper = styled.div`
   height: 100%;
 `;
 
+const Title = styled.div`
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 13px 25px;
+`;
+
 function Content({
   children,
   title
@@ -30,7 +37,7 @@ function Content({
   return (
     <Warpper>
       <Header>
-        <span>{title}</span>
+        <Title>{title}</Title>
       </Header>
       <div>{children}</div>
     </Warpper>
