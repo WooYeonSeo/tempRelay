@@ -28,7 +28,7 @@ const Title = styled.div`
 
 const ContentBox = styled.div`
   width: 100%;
-  min-height: 100%;
+  flex: 1;
   position: relative;
   overflow: scroll;
 `;
