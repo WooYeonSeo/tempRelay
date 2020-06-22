@@ -173,6 +173,30 @@ export function Router() {
     });
   };
 
+  const handleDeleteProb = (id: number) => (
+    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    updateQuery((prevdata: FeProblemsQuery) => {
+      // 선택된 문제 배열에서 삭제
+      const filteredData =
+        prevdata.feProblems &&
+        (prevdata.feProblems as Problem[]).filter((prob: Problem) => {
+          return prob.id !== id;
+        });
+
+      return { feProblems: filteredData };
+    });
+    // id ===similarNumObj.similarNum 유사문항 리셋!
+    if (id === similarNumObj.similarNum) {
+      changeSimliarNumber({
+        variables: {
+          similarNum: 0,
+          unitName: ""
+        }
+      });
+    }
+  };
+
   return (
     <Warpper>
       <Content title="학습지 상세 편집">
@@ -189,6 +213,7 @@ export function Router() {
                     count={index + 1}
                     problemURL={problem.problemURL}
                     key={problem.id}
+                    {...{ handleDeleteProb }}
                   />
                 )
               );

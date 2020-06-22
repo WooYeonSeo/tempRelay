@@ -95,8 +95,18 @@ interface Problem {
   unit: string;
   count: number;
   problemURL: string;
+  handleDeleteProb: (
+    probId: number
+  ) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
 }
-function ProblemCard({ id, type, unit, count, problemURL }: Problem) {
+function ProblemCard({
+  id,
+  type,
+  unit,
+  count,
+  problemURL,
+  handleDeleteProb
+}: Problem) {
   const [changeSimliarNumber] = useMutation(RESET_SIMILAR_NUMBER);
   const { data: similarNumObj } = useQuery(GET_SIMILAR_NUM);
   const handleOnClick = (value: number, unit: string) => (
@@ -104,6 +114,7 @@ function ProblemCard({ id, type, unit, count, problemURL }: Problem) {
   ) => {
     changeSimliarNumber({ variables: { similarNum: value, unitName: unit } });
   };
+
   return (
     <Wrapper>
       <Header>
@@ -111,7 +122,9 @@ function ProblemCard({ id, type, unit, count, problemURL }: Problem) {
           <ProblemType>{type}</ProblemType>
           <ProblemUnit>{unit}</ProblemUnit>
 
-          <RightButton isSelected={false}>삭제</RightButton>
+          <RightButton onClick={handleDeleteProb(id)} isSelected={false}>
+            삭제
+          </RightButton>
           <RightButton
             onClick={handleOnClick(id, unit)}
             isSelected={similarNumObj.similarNum == id}
