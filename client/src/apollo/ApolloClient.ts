@@ -3,6 +3,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 // import { resolvers, typeDefs, DefaultCache } from "./store/index";
 import gql from "graphql-tag";
 import link from "./Link";
+
 export interface DefaultCache {
   interval: string;
 }
