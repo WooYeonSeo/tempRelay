@@ -12,24 +12,24 @@ export type Scalars = {
 
 export type Problem = {
   __typename?: 'Problem';
-  id?: Maybe<Scalars['Int']>;
-  unitCode?: Maybe<Scalars['Int']>;
-  answerData?: Maybe<Scalars['String']>;
-  problemLevel?: Maybe<Scalars['Int']>;
-  problemType?: Maybe<Scalars['String']>;
-  problemURL?: Maybe<Scalars['String']>;
-  unitName?: Maybe<Scalars['String']>;
-  needCheckLayout?: Maybe<Scalars['Int']>;
-  source?: Maybe<Scalars['Int']>;
-  hide?: Maybe<Scalars['Int']>;
-  curriculumNumber?: Maybe<Scalars['Int']>;
-  cebuCode?: Maybe<Scalars['Int']>;
-  totalTimes?: Maybe<Scalars['Int']>;
-  correctTimes?: Maybe<Scalars['Int']>;
-  hwpExist?: Maybe<Scalars['Int']>;
-  scorable?: Maybe<Scalars['Int']>;
-  tagTop?: Maybe<Scalars['String']>;
-  bookDataId?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  unitCode: Scalars['Int'];
+  answerData: Scalars['String'];
+  problemLevel: Scalars['Int'];
+  problemType: Scalars['String'];
+  problemURL: Scalars['String'];
+  unitName: Scalars['String'];
+  needCheckLayout: Scalars['Int'];
+  source: Scalars['Int'];
+  hide: Scalars['Int'];
+  curriculumNumber: Scalars['Int'];
+  cebuCode: Scalars['Int'];
+  totalTimes: Scalars['Int'];
+  correctTimes: Scalars['Int'];
+  hwpExist: Scalars['Int'];
+  scorable: Scalars['Int'];
+  tagTop: Scalars['String'];
+  bookDataId: Scalars['Int'];
 };
 
 export type Query = {
@@ -133,24 +133,24 @@ export type ResolversParentTypes = {
 };
 
 export type ProblemResolvers<ContextType = any, ParentType extends ResolversParentTypes['Problem'] = ResolversParentTypes['Problem']> = {
-  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  unitCode?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  answerData?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  problemLevel?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  problemType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  problemURL?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  unitName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  needCheckLayout?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  source?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  hide?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  curriculumNumber?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  cebuCode?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  totalTimes?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  correctTimes?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  hwpExist?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  scorable?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  tagTop?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  bookDataId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  unitCode?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  answerData?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  problemLevel?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  problemType?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  problemURL?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  unitName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  needCheckLayout?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  source?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  hide?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  curriculumNumber?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  cebuCode?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  totalTimes?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  correctTimes?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  hwpExist?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  scorable?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  tagTop?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  bookDataId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 

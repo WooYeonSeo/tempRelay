@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useFeProblemsQuery } from "../../react-components.d";
+import ProblemCard from "../../component/ProblemCard";
 
 const Warpper = styled.div`
   display: flex;
@@ -27,6 +28,9 @@ const Title = styled.div`
 
 const ContentBox = styled.div`
   width: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: scroll;
 `;
 function Content({
   children,
@@ -36,7 +40,8 @@ function Content({
   title: String;
 }) {
   const { data } = useFeProblemsQuery();
-  console.log("data", data);
+  console.log("data", data && data.feProblems);
+
   return (
     <Warpper>
       <Header>

@@ -18,24 +18,24 @@ export type Scalars = {
 
 export type Problem = {
   __typename?: 'Problem';
-  id?: Maybe<Scalars['Int']>;
-  unitCode?: Maybe<Scalars['Int']>;
-  answerData?: Maybe<Scalars['String']>;
-  problemLevel?: Maybe<Scalars['Int']>;
-  problemType?: Maybe<Scalars['String']>;
-  problemURL?: Maybe<Scalars['String']>;
-  unitName?: Maybe<Scalars['String']>;
-  needCheckLayout?: Maybe<Scalars['Int']>;
-  source?: Maybe<Scalars['Int']>;
-  hide?: Maybe<Scalars['Int']>;
-  curriculumNumber?: Maybe<Scalars['Int']>;
-  cebuCode?: Maybe<Scalars['Int']>;
-  totalTimes?: Maybe<Scalars['Int']>;
-  correctTimes?: Maybe<Scalars['Int']>;
-  hwpExist?: Maybe<Scalars['Int']>;
-  scorable?: Maybe<Scalars['Int']>;
-  tagTop?: Maybe<Scalars['String']>;
-  bookDataId?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  unitCode: Scalars['Int'];
+  answerData: Scalars['String'];
+  problemLevel: Scalars['Int'];
+  problemType: Scalars['String'];
+  problemURL: Scalars['String'];
+  unitName: Scalars['String'];
+  needCheckLayout: Scalars['Int'];
+  source: Scalars['Int'];
+  hide: Scalars['Int'];
+  curriculumNumber: Scalars['Int'];
+  cebuCode: Scalars['Int'];
+  totalTimes: Scalars['Int'];
+  correctTimes: Scalars['Int'];
+  hwpExist: Scalars['Int'];
+  scorable: Scalars['Int'];
+  tagTop: Scalars['String'];
+  bookDataId: Scalars['Int'];
 };
 
 export type Query = {
@@ -51,7 +51,7 @@ export type FeProblemsQuery = (
   { __typename?: 'Query' }
   & { feProblems?: Maybe<Array<Maybe<(
     { __typename?: 'Problem' }
-    & Pick<Problem, 'id'>
+    & Pick<Problem, 'id' | 'unitCode' | 'answerData' | 'problemLevel' | 'problemType' | 'problemURL' | 'unitName'>
   )>>> }
 );
 
@@ -71,6 +71,12 @@ export const FeProblemsDocument = gql`
     query feProblems {
   feProblems {
     id
+    unitCode
+    answerData
+    problemLevel
+    problemType
+    problemURL
+    unitName
   }
 }
     `;
