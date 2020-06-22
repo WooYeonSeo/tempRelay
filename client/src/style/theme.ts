@@ -4,7 +4,7 @@ import { css, DefaultTheme } from "styled-components";
 const theme: DefaultTheme = {
   colors: {
     sampleBlue: "blue",
-    backgroundColor: "white",
+    backgroundColor: "#F5F5F5",
     selectedBlue: "#157efb",
     hoverGrey: "#656565",
     hoverBackgroundGrey: "#e8e8e8",

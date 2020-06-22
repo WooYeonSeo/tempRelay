@@ -2,12 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import { useFeProblemsQuery } from "../../react-components.d";
 
-const Header = styled.div`
-  display: flex;
-  width: 100%;
-  flex: 1;
-  height: 100%;
-`;
 const Warpper = styled.div`
   display: flex;
   position: relative;
@@ -18,6 +12,12 @@ const Warpper = styled.div`
   height: 100%;
 `;
 
+const Header = styled.div`
+  display: flex;
+  width: 100%;
+  border-bottom: 3px solid #f5f5f5;
+`;
+
 const Title = styled.div`
   font-weight: bold;
   font-size: 14px;
@@ -25,6 +25,9 @@ const Title = styled.div`
   padding: 13px 25px;
 `;
 
+const ContentBox = styled.div`
+  width: 100%;
+`;
 function Content({
   children,
   title
@@ -39,7 +42,7 @@ function Content({
       <Header>
         <Title>{title}</Title>
       </Header>
-      <div>{children}</div>
+      <ContentBox>{children}</ContentBox>
     </Warpper>
   );
 }

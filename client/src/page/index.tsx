@@ -7,14 +7,16 @@ const Warpper = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  background: white;
   height: 100%;
 `;
 
 const Divider = styled.p`
-  background-color: #e0e0e0;
-  background: #e0e0e0;
   width: 2px;
   height: 100%;
+  border-left: 2px solid #e0e0e0;
+  background: #f5f5f5;
+  padding-right: 8px;
 `;
 export function Router() {
   const { data } = useFeProblemsQuery();
@@ -24,7 +26,7 @@ export function Router() {
       <Content title="학습지 상세 편집">
         <span>내용 넣기</span>
       </Content>
-      <Divider> a</Divider>
+      <Divider> </Divider>
       <Content title="문항 교체/추가">
         <span>내용 넣기</span>
       </Content>

@@ -5,6 +5,7 @@ export default createGlobalStyle`
     ${reset}
     html{
         height:100%;
+        background:${props => props.theme.colors.backgroundColor};
     }
     * {
         box-sizing: border-box; 
