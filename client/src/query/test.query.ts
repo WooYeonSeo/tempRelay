@@ -1,7 +1,19 @@
 import { gql } from "apollo-boost";
 
-export const BOOKING_REQEST_BY_TERM = gql`
-  query feProblem {
-    feProblem
+export const FE_PROBLEMS = gql`
+  query feProblems {
+    feProblems {
+      id
+    }
+  }
+`;
+
+export const SE_PROBLEMS = gql`
+  query feSimilars {
+    feSimilars {
+      id
+      unitCode
+      problemLevel
+    }
   }
 `;
