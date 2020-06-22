@@ -1,44 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프리윌린 사전과제
 
-## Available Scripts
+## 🎈실행
 
-In the project directory, you can run:
+```
+cd client
+yarn start
 
-### `yarn start`
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+=> http://localhost:8000/
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+cd server
+yarn start:dev
 
-### `yarn test`
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+=> http://localhost:4000/graphql
 
-### `yarn build`
+## 🥎 CheckList
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 구현 기능
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+✅ localhost로 http 통신을 통해 불러오기 - data 조회 서버 graphQL로 구축
+✅ 화면 마크업
+✅ 문제리스트에서 문제를 노출
+✅ 문제리스트에서 선택(`Active`)한 문제가 없을 경우 placeholder 노출
+✅ 유사문항 버튼 클릭 시 유사문제 리스트에 문제 목록 노출
+✅ 유사문항 클릭 시 파란색으로 토글 - 한개만 선택 가능
+✅ 삭제 : 해당 문제 삭제, 유사문제 리스트 초기화
+✅ 추가 : 선택된 유사문항 하단에 문제 추가, `active` 그대로 유지
+✅ 교체 : 선택된 유사문항과 문항 교체
+✅ 유사문제 리스트에 unitName 노출
+✅ 상태관리 : Apollo-client
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ ] 성능 향상을 위해 최적화 작업
 
-### `yarn eject`
+## 📚 사용 기술
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Server : Typescript, GraphQL, nodejs
+Client : Typescript, React, Apollo-Client, Styled-Component
