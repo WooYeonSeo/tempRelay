@@ -34,7 +34,8 @@ export type Problem = {
 
 export type Query = {
   __typename?: 'Query';
-  feProblem?: Maybe<Scalars['String']>;
+  feProblems?: Maybe<Array<Maybe<Problem>>>;
+  feSimilars?: Maybe<Array<Maybe<Problem>>>;
 };
 
 
@@ -116,19 +117,19 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
-  String: ResolverTypeWrapper<Scalars['String']>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Problem: ResolverTypeWrapper<Problem>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  String: ResolverTypeWrapper<Scalars['String']>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {};
-  String: Scalars['String'];
-  Boolean: Scalars['Boolean'];
   Problem: Problem;
   Int: Scalars['Int'];
+  String: Scalars['String'];
+  Boolean: Scalars['Boolean'];
 };
 
 export type ProblemResolvers<ContextType = any, ParentType extends ResolversParentTypes['Problem'] = ResolversParentTypes['Problem']> = {
@@ -154,7 +155,8 @@ export type ProblemResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  feProblem?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  feProblems?: Resolver<Maybe<Array<Maybe<ResolversTypes['Problem']>>>, ParentType, ContextType>;
+  feSimilars?: Resolver<Maybe<Array<Maybe<ResolversTypes['Problem']>>>, ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {

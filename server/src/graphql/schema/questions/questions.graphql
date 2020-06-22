@@ -1,5 +1,6 @@
 type Query {
-  feProblem: String
+  feProblems: [Problem]
+  feSimilars: [Problem]
 }
 
 type Problem {
