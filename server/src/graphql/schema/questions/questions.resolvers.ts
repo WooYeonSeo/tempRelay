@@ -8,6 +8,7 @@ export default {
       try {
         const file = fs.readFileSync(path.join(__dirname + '../../../../data/fe-problems.json'), { encoding: 'utf8' })
         const { data } = JSON.parse(file)
+        console.log('feProblems', data)
 
         return data
       } catch (error) {
@@ -19,6 +20,7 @@ export default {
       try {
         const file = fs.readFileSync(path.join(__dirname + '../../../../data/fe-similars.json'), { encoding: 'utf8' })
         const { data } = JSON.parse(file)
+        console.log('test', data)
 
         return data
       } catch (error) {
