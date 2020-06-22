@@ -98,7 +98,7 @@ interface IProblem {
   count: number;
   problemURL: string;
   addProblems: (
-    newProb: Problem
+    newProb: number
   ) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
   exChangeProblem: (
     probId: number
@@ -126,7 +126,7 @@ function ProblemCard({
             교체
           </RightButton>
           <RightButton
-            /*  onClick={addProblems({ id })} */
+            onClick={addProblems(id)}
             isSelected={similarNumObj.similarNum == id}
           >
             추가

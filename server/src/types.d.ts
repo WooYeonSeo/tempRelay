@@ -34,8 +34,8 @@ export type Problem = {
 
 export type Query = {
   __typename?: 'Query';
-  feProblems?: Maybe<Array<Maybe<Problem>>>;
-  feSimilars?: Maybe<Array<Maybe<Problem>>>;
+  feProblems: Array<Problem>;
+  feSimilars: Array<Problem>;
 };
 
 
@@ -155,8 +155,8 @@ export type ProblemResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  feProblems?: Resolver<Maybe<Array<Maybe<ResolversTypes['Problem']>>>, ParentType, ContextType>;
-  feSimilars?: Resolver<Maybe<Array<Maybe<ResolversTypes['Problem']>>>, ParentType, ContextType>;
+  feProblems?: Resolver<Array<ResolversTypes['Problem']>, ParentType, ContextType>;
+  feSimilars?: Resolver<Array<ResolversTypes['Problem']>, ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {

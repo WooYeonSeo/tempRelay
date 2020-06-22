@@ -1,6 +1,6 @@
 type Query {
-  feProblems: [Problem]
-  feSimilars: [Problem]
+  feProblems: [Problem!]!
+  feSimilars: [Problem!]!
 }
 
 type Problem {

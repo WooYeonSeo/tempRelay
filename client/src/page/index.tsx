@@ -5,7 +5,6 @@ import {
   useFeSimilarsQuery,
   Problem,
   FeProblemsQuery,
-  Maybe,
   FeSimilarsQuery
 } from "../react-components.d";
 import Content from "../composition/Content";
@@ -74,13 +73,49 @@ const UnitNameBar = styled.div`
 export function Router() {
   const { data, updateQuery } = useFeProblemsQuery();
   const { data: simData, updateQuery: simUpdateQuery } = useFeSimilarsQuery();
-  // console.log("data", data);
   const { data: similarNumObj } = useQuery(GET_SIMILAR_NUM);
   const [changeSimliarNumber] = useMutation(RESET_SIMILAR_NUMBER);
 
-  const addProblems = (newProb: Problem) => (
+  const addProblems = (id: number) => (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => {};
+  ) => {
+    const getNewProb = (id: number): Problem | undefined | null => {
+      const newData2 =
+        simData &&
+        simData.feSimilars &&
+        simData.feSimilars.filter(prob => {
+          return prob && prob.id == id;
+        });
+      return newData2 && (newData2[0] as Problem);
+    };
+    const newProb: Problem | undefined | null = getNewProb(id);
+    updateQuery((prevdata: FeProblemsQuery) => {
+      // 추가된 배열 생성
+      const filteredData =
+        prevdata.feProblems &&
+        (prevdata.feProblems as Problem[]).reduce(
+          (prev: Problem[], prob: Problem): Problem[] => {
+            if (prev && prob.id == similarNumObj.similarNum && newProb) {
+              return [...prev, prob, newProb];
+            } else if (prev) return [...prev, prob];
+            return [prob];
+          },
+          []
+        );
+
+      return { feProblems: filteredData };
+    });
+
+    simUpdateQuery((prevdata: FeSimilarsQuery) => {
+      const filteredData =
+        prevdata.feSimilars &&
+        prevdata.feSimilars.filter(prob => {
+          return newProb && prob && prob.id !== newProb.id;
+        });
+
+      return { feSimilars: filteredData };
+    });
+  };
 
   const exChangeProblem = (probId: number) => (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>
@@ -102,9 +137,9 @@ export function Router() {
           if (prob && prob.id == similarNumObj.similarNum && newData2) {
             return newData2[0];
           } else return prob;
-          // return prob && prob.id !== similarNumObj.similarNum;
         });
 
+      // 유사문항 포커스 유지를 위해서 교체된 번호 유지
       if (newData2) {
         const temp = newData2[0] as Problem;
 
