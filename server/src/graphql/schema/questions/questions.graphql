@@ -1,0 +1,24 @@
+type Query {
+  feProblem: String
+}
+
+type Problem {
+  id: Int
+  unitCode: Int
+  answerData: String
+  problemLevel: Int
+  problemType: String
+  problemURL: String
+  unitName: String
+  needCheckLayout: Int
+  source: Int
+  hide: Int
+  curriculumNumber: Int
+  cebuCode: Int
+  totalTimes: Int
+  correctTimes: Int
+  hwpExist: Int
+  scorable: Int
+  tagTop: String
+  bookDataId: Int
+}
