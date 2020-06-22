@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/named
 import { FlattenInterpolation } from "styled-components";
 
 declare module "styled-components" {

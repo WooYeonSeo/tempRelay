@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/named
-import { css, DefaultTheme } from "styled-components";
+import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
   colors: {

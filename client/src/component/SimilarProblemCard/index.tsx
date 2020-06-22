@@ -1,11 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useMutation, useQuery } from "@apollo/react-hooks";
-import {
-  RESET_SIMILAR_NUMBER,
-  GET_SIMILAR_NUM
-} from "../../apollo/store/interval.cache";
-import { Problem } from "../../react-components.d";
+import { useQuery } from "@apollo/react-hooks";
+import { GET_SIMILAR_NUM } from "../../apollo/store/interval.cache";
 
 const Wrapper = styled.div`
   position: relative;
@@ -127,7 +123,7 @@ function ProblemCard({
           </RightButton>
           <RightButton
             onClick={addProblems(id)}
-            isSelected={similarNumObj.similarNum == id}
+            isSelected={similarNumObj.similarNum === id}
           >
             추가
           </RightButton>

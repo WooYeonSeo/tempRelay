@@ -127,7 +127,7 @@ function ProblemCard({
           </RightButton>
           <RightButton
             onClick={handleOnClick(id, unit)}
-            isSelected={similarNumObj.similarNum == id}
+            isSelected={similarNumObj.similarNum === id}
           >
             유사문항
           </RightButton>

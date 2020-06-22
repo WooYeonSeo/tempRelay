@@ -46,10 +46,6 @@ export const ButtonStyle = styled.p`
   text-align: center;
   line-height: 14px;
   cursor: pointer;
-  /* &:hover {
-    color: #ffffff;
-    background: #00abff;
-  } */
 `;
 
 export const EmptyContent = styled.div`
@@ -84,7 +80,7 @@ export function Router() {
         simData &&
         simData.feSimilars &&
         simData.feSimilars.filter(prob => {
-          return prob && prob.id == id;
+          return prob && prob.id === id;
         });
       return newData2 && (newData2[0] as Problem);
     };
@@ -95,7 +91,7 @@ export function Router() {
         prevdata.feProblems &&
         (prevdata.feProblems as Problem[]).reduce(
           (prev: Problem[], prob: Problem): Problem[] => {
-            if (prev && prob.id == similarNumObj.similarNum && newProb) {
+            if (prev && prob.id === similarNumObj.similarNum && newProb) {
               return [...prev, prob, newProb];
             } else if (prev) return [...prev, prob];
             return [prob];
@@ -127,14 +123,14 @@ export function Router() {
         simData &&
         simData.feSimilars &&
         simData.feSimilars.filter(prob => {
-          return prob && prob.id == probId;
+          return prob && prob.id === probId;
         });
 
       // 문제 교체한 배열
       const filteredData =
         prevdata.feProblems &&
         prevdata.feProblems.map(prob => {
-          if (prob && prob.id == similarNumObj.similarNum && newData2) {
+          if (prob && prob.id === similarNumObj.similarNum && newData2) {
             return newData2[0];
           } else return prob;
         });
@@ -158,13 +154,13 @@ export function Router() {
         data &&
         data.feProblems &&
         data.feProblems.filter(prob => {
-          return prob && prob.id == similarNumObj.similarNum;
+          return prob && prob.id === similarNumObj.similarNum;
         });
 
       const filteredData =
         prevdata.feSimilars &&
         prevdata.feSimilars.map(prob => {
-          if (prob && prob.id == probId && newData) {
+          if (prob && prob.id === probId && newData) {
             return newData[0];
           } else return prob;
         });
@@ -222,7 +218,7 @@ export function Router() {
       </Content>
       <Divider> </Divider>
       <Content title="문항 교체/추가">
-        {data && similarNumObj.similarNum == 0 ? (
+        {data && similarNumObj.similarNum === 0 ? (
           <EmptyContent>
             <ButtonStyle>유사문항</ButtonStyle> 버튼을 누르면
             <br />

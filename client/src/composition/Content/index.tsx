@@ -1,7 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useFeProblemsQuery } from "../../react-components.d";
-import ProblemCard from "../../component/ProblemCard";
 
 const Warpper = styled.div`
   display: flex;
