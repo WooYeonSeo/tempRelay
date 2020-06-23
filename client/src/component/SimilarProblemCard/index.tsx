@@ -19,6 +19,7 @@ const Title = styled.div`
   width: 100%;
   padding: 3px 0;
   line-height: 20px;
+  display: flex;
 `;
 
 const ContentBox = styled.div`
@@ -34,13 +35,19 @@ const ProblemType = styled.span`
   font-weight: bold;
   padding: 16px 38px;
 `;
+
 const ProblemUnit = styled.span`
   display: inline-block;
   font-size: 14px;
   line-height: 14px;
   color: #4c4c4c;
+  flex: 1;
   padding: 16px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
+
 export const ButtonStyle = styled.span`
   background: #ffffff;
   border: 1px solid #e0e0e0;
@@ -111,7 +118,7 @@ function ProblemCard({
       <Header>
         <Title>
           <ProblemType>{type}</ProblemType>
-          <ProblemUnit>{unit}</ProblemUnit>
+          <ProblemUnit title={unit}>{unit}</ProblemUnit>
 
           <RightButton onClick={exChangeProblem(id)} isSelected={false}>
             교체

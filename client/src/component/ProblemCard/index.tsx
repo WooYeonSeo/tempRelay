@@ -124,7 +124,7 @@ function ProblemCard({
       <Header>
         <Title>
           <ProblemType>{type}</ProblemType>
-          <ProblemUnit>{unit}</ProblemUnit>
+          <ProblemUnit title={unit}>{unit}</ProblemUnit>
 
           <ButtonContainer>
             <RightButton onClick={handleDeleteProb(id)} isSelected={false}>
