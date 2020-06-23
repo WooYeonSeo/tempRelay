@@ -19,6 +19,7 @@ const Title = styled.div`
   font-weight: bold;
   font-size: 14px;
   width: 100%;
+  display: flex;
   padding: 3px 0;
   line-height: 20px;
 `;
@@ -41,7 +42,11 @@ const ProblemUnit = styled.span`
   font-size: 14px;
   line-height: 14px;
   color: #4c4c4c;
+  flex: 1;
   padding: 16px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 export const ButtonStyle = styled.span`
   background: #ffffff;
@@ -84,6 +89,10 @@ const ProblemImg = styled.img`
 
   background: blue;
 `;
+
+const ButtonContainer = styled.div`
+  display: inline-block;
+`;
 interface Problem {
   id: number;
   type: string;
@@ -117,15 +126,17 @@ function ProblemCard({
           <ProblemType>{type}</ProblemType>
           <ProblemUnit>{unit}</ProblemUnit>
 
-          <RightButton onClick={handleDeleteProb(id)} isSelected={false}>
-            삭제
-          </RightButton>
-          <RightButton
-            onClick={handleOnClick(id, unit)}
-            isSelected={similarNumObj.similarNum === id}
-          >
-            유사문항
-          </RightButton>
+          <ButtonContainer>
+            <RightButton onClick={handleDeleteProb(id)} isSelected={false}>
+              삭제
+            </RightButton>
+            <RightButton
+              onClick={handleOnClick(id, unit)}
+              isSelected={similarNumObj.similarNum === id}
+            >
+              유사문항
+            </RightButton>
+          </ButtonContainer>
         </Title>
       </Header>
       <ContentBox>

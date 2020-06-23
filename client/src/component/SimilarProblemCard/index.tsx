@@ -39,7 +39,6 @@ const ProblemUnit = styled.span`
   font-size: 14px;
   line-height: 14px;
   color: #4c4c4c;
-
   padding: 16px 0;
 `;
 export const ButtonStyle = styled.span`
