@@ -1,21 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
-import {
-  useFeProblemsQuery,
-  useFeSimilarsQuery,
-  Problem,
-  FeProblemsQuery,
-  FeSimilarsQuery
-} from "../react-components.d";
-import Content from "../component/Content";
-import SimilarProblemCard from "../component/SimilarProblemCard";
 import ProblemList from "../composition/ProblemList";
 import SimilarProblemList from "../composition/SimilarProblemList";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import {
-  GET_SIMILAR_NUM,
-  RESET_SIMILAR_NUMBER
-} from "../apollo/store/interval.cache";
+
 const Warpper = styled.div`
   display: flex;
   position: relative;
@@ -59,14 +46,7 @@ export const EmptyContent = styled.div`
   line-height: 28px;
   color: #9f9f9f;
 `;
-const UnitNameBar = styled.div`
-  height: 36px;
-  font-size: 14px;
-  padding: 8px 25px;
-  line-height: 20px;
-  background: #fafafa;
-  color: #4c4c4c;
-`;
+
 export function Router() {
   return (
     <Warpper>
