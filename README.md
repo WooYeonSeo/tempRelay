@@ -2,7 +2,8 @@
 
 ## 🎈실행
 
-```
+```bash
+# root 폴더에서 시작
 cd client
 yarn start
 
@@ -10,7 +11,8 @@ yarn start
 
 => http://localhost:8000/
 
-```
+```bash
+# root 폴더에서 시작
 cd server
 yarn start:dev
 
