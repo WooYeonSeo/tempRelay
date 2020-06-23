@@ -4,21 +4,24 @@
 
 ```bash
 # root 폴더에서 시작
-cd client
-yarn start
-
-```
-
-=> http://localhost:8000/
-
-```bash
-# root 폴더에서 시작
 cd server
+yarn
 yarn start:dev
 
 ```
 
 => http://localhost:4000/graphql
+
+```bash
+# root 폴더에서 시작
+# cd ..
+cd client
+yarn
+yarn start
+
+```
+
+=> http://localhost:8000/
 
 ## 🥎 CheckList
 
