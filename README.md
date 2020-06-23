@@ -14,8 +14,6 @@ yarn start:dev
 
 ```bash
 # root 폴더에서 시작
-# cd ..
-cd client
 yarn
 yarn start
 
