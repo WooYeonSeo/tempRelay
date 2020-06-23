@@ -56,10 +56,6 @@ export const ButtonStyle = styled.span`
   text-align: center;
   line-height: 14px;
   cursor: pointer;
-  /* &:hover {
-    color: #ffffff;
-    background: #00abff;
-  } */
 `;
 
 const RightButton = styled(ButtonStyle)<{ isSelected: boolean }>`
@@ -131,7 +127,7 @@ function ProblemCard({
       </Header>
       <ContentBox>
         <QNumber>{count}.</QNumber>
-        <ProblemImg src={problemURL}></ProblemImg>
+        <ProblemImg loading="lazy" src={problemURL}></ProblemImg>
       </ContentBox>
     </Wrapper>
   );
