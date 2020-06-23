@@ -4,6 +4,7 @@ import { reset } from "styled-reset";
 export default createGlobalStyle`
     ${reset}
     html{
+        font-family: 'Noto Sans KR';
         height:100%;
         background:${props => props.theme.colors.backgroundColor};
     }
@@ -18,7 +19,7 @@ export default createGlobalStyle`
     h6 { font-size: 0.7em; }
     body {
         background-color: ${props => props.theme.colors.backgroundColor};
-        font-family: 'NanumGothic', 'Helvetica',' Neue', 'Helvetica', 'Arial', 'sans-serif';
+        font-family: 'Noto Sans KR','NanumGothic', 'Helvetica',' Neue', 'Helvetica', 'Arial', 'sans-serif';
         height:100%;
     }
     #root{

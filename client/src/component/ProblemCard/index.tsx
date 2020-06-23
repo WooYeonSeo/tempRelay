@@ -41,7 +41,6 @@ const ProblemUnit = styled.span`
   font-size: 14px;
   line-height: 14px;
   color: #4c4c4c;
-
   padding: 16px 0;
 `;
 export const ButtonStyle = styled.span`
@@ -58,10 +57,6 @@ export const ButtonStyle = styled.span`
   text-align: center;
   line-height: 14px;
   cursor: pointer;
-  /* &:hover {
-    color: #ffffff;
-    background: #00abff;
-  } */
 `;
 
 const RightButton = styled(ButtonStyle)<{ isSelected: boolean }>`
