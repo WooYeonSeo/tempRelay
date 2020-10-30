@@ -1,0 +1,41 @@
+type Query {
+    feProblems: [Problem!]!
+    feSimilars: [Problem!]!
+    testRelay: Relay!
+    testRelayParam(id: String): RelayString!
+    todo: TODO
+}
+
+type Problem {
+    id: String!
+    unitCode: Int!
+    answerData: String!
+    problemLevel: Int!
+    problemType: String!
+    problemURL: String!
+    unitName: String!
+    needCheckLayout: Int!
+    source: Int!
+    hide: Int!
+    curriculumNumber: Int!
+    cebuCode: Int!
+    totalTimes: Int!
+    correctTimes: Int!
+    hwpExist: Int!
+    scorable: Int!
+    tagTop: String!
+    bookDataId: Int!
+}
+
+type Relay {
+    relay: Boolean
+}
+
+type RelayString {
+    relay: String
+}
+
+type TODO {
+    complete: Boolean
+    text: String
+}

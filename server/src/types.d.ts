@@ -1,6 +1,7 @@
 import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
+export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -36,6 +37,30 @@ export type Query = {
   __typename?: 'Query';
   feProblems: Array<Problem>;
   feSimilars: Array<Problem>;
+  testRelay: Relay;
+  testRelayParam: RelayString;
+  todo?: Maybe<Todo>;
+};
+
+
+export type QueryTestRelayParamArgs = {
+  id?: Maybe<Scalars['String']>;
+};
+
+export type Relay = {
+  __typename?: 'Relay';
+  relay?: Maybe<Scalars['Boolean']>;
+};
+
+export type RelayString = {
+  __typename?: 'RelayString';
+  relay?: Maybe<Scalars['String']>;
+};
+
+export type Todo = {
+  __typename?: 'TODO';
+  complete?: Maybe<Scalars['Boolean']>;
+  text?: Maybe<Scalars['String']>;
 };
 
 
@@ -120,7 +145,10 @@ export type ResolversTypes = {
   Problem: ResolverTypeWrapper<Problem>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  Relay: ResolverTypeWrapper<Relay>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  RelayString: ResolverTypeWrapper<RelayString>;
+  TODO: ResolverTypeWrapper<Todo>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -129,7 +157,10 @@ export type ResolversParentTypes = {
   Problem: Problem;
   Int: Scalars['Int'];
   String: Scalars['String'];
+  Relay: Relay;
   Boolean: Scalars['Boolean'];
+  RelayString: RelayString;
+  TODO: Todo;
 };
 
 export type ProblemResolvers<ContextType = any, ParentType extends ResolversParentTypes['Problem'] = ResolversParentTypes['Problem']> = {
@@ -157,11 +188,33 @@ export type ProblemResolvers<ContextType = any, ParentType extends ResolversPare
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   feProblems?: Resolver<Array<ResolversTypes['Problem']>, ParentType, ContextType>;
   feSimilars?: Resolver<Array<ResolversTypes['Problem']>, ParentType, ContextType>;
+  testRelay?: Resolver<ResolversTypes['Relay'], ParentType, ContextType>;
+  testRelayParam?: Resolver<ResolversTypes['RelayString'], ParentType, ContextType, RequireFields<QueryTestRelayParamArgs, never>>;
+  todo?: Resolver<Maybe<ResolversTypes['TODO']>, ParentType, ContextType>;
+};
+
+export type RelayResolvers<ContextType = any, ParentType extends ResolversParentTypes['Relay'] = ResolversParentTypes['Relay']> = {
+  relay?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
+};
+
+export type RelayStringResolvers<ContextType = any, ParentType extends ResolversParentTypes['RelayString'] = ResolversParentTypes['RelayString']> = {
+  relay?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
+};
+
+export type TodoResolvers<ContextType = any, ParentType extends ResolversParentTypes['TODO'] = ResolversParentTypes['TODO']> = {
+  complete?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  text?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Problem?: ProblemResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Relay?: RelayResolvers<ContextType>;
+  RelayString?: RelayStringResolvers<ContextType>;
+  TODO?: TodoResolvers<ContextType>;
 };
 
 

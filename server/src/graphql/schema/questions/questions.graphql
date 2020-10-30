@@ -1,6 +1,9 @@
 type Query {
   feProblems: [Problem!]!
   feSimilars: [Problem!]!
+  testRelay: Relay!
+  testRelayParam(id: String): RelayString!
+  todo: TODO
 }
 
 type Problem {
@@ -22,4 +25,17 @@ type Problem {
   scorable: Int!
   tagTop: String!
   bookDataId: Int!
+}
+
+type Relay {
+  relay: Boolean
+}
+
+type RelayString {
+  relay: String
+}
+
+type TODO {
+  complete: Boolean
+  text: String
 }
