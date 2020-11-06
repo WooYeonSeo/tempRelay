@@ -4,6 +4,7 @@ type Query {
     testRelay: Relay!
     testRelayParam(id: String): RelayString!
     todo: TODO
+    todoList: TodoList
 }
 
 type Problem {
@@ -38,4 +39,16 @@ type RelayString {
 type TODO {
     complete: Boolean
     text: String
+}
+
+type TodoList {
+    userid: String!
+    totalCount: Int!
+    data: [Todo]
+}
+
+type Todo {
+    todoid: Int!
+    text: String!
+    complete: Boolean!
 }

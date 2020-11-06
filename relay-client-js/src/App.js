@@ -3,7 +3,7 @@ import './App.css'
 import graphql from 'babel-plugin-relay/macro'
 import { QueryRenderer } from 'react-relay'
 import { Environment } from './relay'
-import Todo from './Todo'
+import TodoList from './Components/TodoList';
 
 const GET_QUERY = graphql`
     query AppQuery {
@@ -25,25 +25,12 @@ function App() {
     const ID = '12'
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-                <QueryRenderer
+                {/* <QueryRenderer
                     environment={Environment}
                     query={GET_QUERY}
                     variables={{}}
                     render={({ error, props }) => {
-                        console.log('data', props?.testRelay?.relay)
+                        console.log('check2', props?.testRelay?.relay)
                         if (error) {
                             return <div>Error!</div>
                         }
@@ -63,7 +50,7 @@ function App() {
                     query={GET_QUERY_PARAM}
                     variables={{ ID }}
                     render={({ error, props }) => {
-                        console.log('data', props?.testRelay?.relay)
+                        console.log('check', props?.testRelay?.relay)
                         if (error) {
                             return <div>Error!</div>
                         }
@@ -76,9 +63,8 @@ function App() {
                             </div>
                         )
                     }}
-                />
-                <Todo />
-            </header>
+                /> */}
+                <TodoList />
         </div>
     )
 }
