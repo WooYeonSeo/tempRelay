@@ -8,9 +8,11 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type TodoListQueryVariables = {||};
-export type TodoListQueryResponse = {|
-  +todoList: ?{|
+export type AppTodoListQueryVariables = {|
+  userid: string
+|};
+export type AppTodoListQueryResponse = {|
+  +user: ?{|
     +userid: string,
     +totalCount: number,
     +data: ?$ReadOnlyArray<?{|
@@ -20,16 +22,18 @@ export type TodoListQueryResponse = {|
     |}>,
   |}
 |};
-export type TodoListQuery = {|
-  variables: TodoListQueryVariables,
-  response: TodoListQueryResponse,
+export type AppTodoListQuery = {|
+  variables: AppTodoListQueryVariables,
+  response: AppTodoListQueryResponse,
 |};
 */
 
 
 /*
-query TodoListQuery {
-  todoList {
+query AppTodoListQuery(
+  $userid: String!
+) {
+  user(id: $userid) {
     userid
     totalCount
     data {
@@ -44,11 +48,24 @@ query TodoListQuery {
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "userid"
+  }
+],
+v1 = [
+  {
     "alias": null,
-    "args": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "id",
+        "variableName": "userid"
+      }
+    ],
     "concreteType": "TodoList",
     "kind": "LinkedField",
-    "name": "todoList",
+    "name": "user",
     "plural": false,
     "selections": [
       {
@@ -103,32 +120,32 @@ var v0 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "TodoListQuery",
-    "selections": (v0/*: any*/),
+    "name": "AppTodoListQuery",
+    "selections": (v1/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "TodoListQuery",
-    "selections": (v0/*: any*/)
+    "name": "AppTodoListQuery",
+    "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "32fe8aa201f4106734d17d54ad189094",
+    "cacheID": "a1d079d44a75c7c5ae90d59b334e2044",
     "id": null,
     "metadata": {},
-    "name": "TodoListQuery",
+    "name": "AppTodoListQuery",
     "operationKind": "query",
-    "text": "query TodoListQuery {\n  todoList {\n    userid\n    totalCount\n    data {\n      todoid\n      text\n      complete\n    }\n  }\n}\n"
+    "text": "query AppTodoListQuery(\n  $userid: String!\n) {\n  user(id: $userid) {\n    userid\n    totalCount\n    data {\n      todoid\n      text\n      complete\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '4de45df3ab4fdecef79aff965d884e99';
+(node/*: any*/).hash = 'c9c40b7550418b5fb9c3804ae3551ead';
 
 module.exports = node;

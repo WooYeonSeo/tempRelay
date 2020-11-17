@@ -40,10 +40,16 @@ export type Query = {
   testRelay: Relay;
   testRelayParam: RelayString;
   todo?: Maybe<Todo>;
+  user?: Maybe<TodoList>;
 };
 
 
 export type QueryTestRelayParamArgs = {
+  id?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryUserArgs = {
   id?: Maybe<Scalars['String']>;
 };
 
@@ -61,6 +67,20 @@ export type Todo = {
   __typename?: 'TODO';
   complete?: Maybe<Scalars['Boolean']>;
   text?: Maybe<Scalars['String']>;
+};
+
+export type TodoItem = {
+  __typename?: 'TodoItem';
+  todoid: Scalars['Int'];
+  text: Scalars['String'];
+  complete: Scalars['Boolean'];
+};
+
+export type TodoList = {
+  __typename?: 'TodoList';
+  userid: Scalars['String'];
+  totalCount: Scalars['Int'];
+  data?: Maybe<Array<Maybe<TodoItem>>>;
 };
 
 
@@ -149,6 +169,8 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   RelayString: ResolverTypeWrapper<RelayString>;
   TODO: ResolverTypeWrapper<Todo>;
+  TodoList: ResolverTypeWrapper<TodoList>;
+  TodoItem: ResolverTypeWrapper<TodoItem>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -161,6 +183,8 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   RelayString: RelayString;
   TODO: Todo;
+  TodoList: TodoList;
+  TodoItem: TodoItem;
 };
 
 export type ProblemResolvers<ContextType = any, ParentType extends ResolversParentTypes['Problem'] = ResolversParentTypes['Problem']> = {
@@ -191,6 +215,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   testRelay?: Resolver<ResolversTypes['Relay'], ParentType, ContextType>;
   testRelayParam?: Resolver<ResolversTypes['RelayString'], ParentType, ContextType, RequireFields<QueryTestRelayParamArgs, never>>;
   todo?: Resolver<Maybe<ResolversTypes['TODO']>, ParentType, ContextType>;
+  user?: Resolver<Maybe<ResolversTypes['TodoList']>, ParentType, ContextType, RequireFields<QueryUserArgs, never>>;
 };
 
 export type RelayResolvers<ContextType = any, ParentType extends ResolversParentTypes['Relay'] = ResolversParentTypes['Relay']> = {
@@ -209,12 +234,28 @@ export type TodoResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
+export type TodoItemResolvers<ContextType = any, ParentType extends ResolversParentTypes['TodoItem'] = ResolversParentTypes['TodoItem']> = {
+  todoid?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  text?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  complete?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
+};
+
+export type TodoListResolvers<ContextType = any, ParentType extends ResolversParentTypes['TodoList'] = ResolversParentTypes['TodoList']> = {
+  userid?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  data?: Resolver<Maybe<Array<Maybe<ResolversTypes['TodoItem']>>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
+};
+
 export type Resolvers<ContextType = any> = {
   Problem?: ProblemResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Relay?: RelayResolvers<ContextType>;
   RelayString?: RelayStringResolvers<ContextType>;
   TODO?: TodoResolvers<ContextType>;
+  TodoItem?: TodoItemResolvers<ContextType>;
+  TodoList?: TodoListResolvers<ContextType>;
 };
 
 

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { Problem } from 'src/types'
+import { Problem, TodoList } from 'src/types'
 
 export default {
   Query: {
@@ -30,16 +30,28 @@ export default {
       return { relay: true }
     },
     testRelayParam: async (_: any, param: any): Promise<{ relay: string } | undefined> => {
-      console.log('param', param)
       return { relay: 'true' + param?.id }
     },
     todo: async (_: any, param: any): Promise<{ complete: boolean; text: string } | undefined> => {
-      console.log('param', param)
       return { complete: true, text: 'text' }
     },
-    todoList: async (_: any, param: any): Promise<{ complete: boolean; text: string } | undefined> => {
+    user: async (_: any, param: any): Promise<TodoList | undefined> => {
       console.log('param', param)
-      return { complete: true, text: 'text' }
+      return myTodo
     },
   },
+}
+
+const myTodo: TodoList = {
+  userid: 'user1',
+  totalCount: 12,
+  data: [
+    { todoid: 1, text: 'gogo', complete: true },
+    { todoid: 2, text: 'gogo2', complete: false },
+    { todoid: 3, text: 'gogo3', complete: true },
+    { todoid: 4, text: 'gogo4', complete: true },
+    { todoid: 5, text: 'gogo5', complete: true },
+    { todoid: 6, text: 'gogo6', complete: true },
+    { todoid: 7, text: 'gogo7', complete: true },
+  ],
 }

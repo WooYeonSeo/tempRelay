@@ -4,7 +4,7 @@ type Query {
     testRelay: Relay!
     testRelayParam(id: String): RelayString!
     todo: TODO
-    todoList: TodoList
+    user(id: String): TodoList
 }
 
 type Problem {

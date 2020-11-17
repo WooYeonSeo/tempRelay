@@ -1,9 +1,8 @@
-import logo from './logo.svg'
 import './App.css'
 import graphql from 'babel-plugin-relay/macro'
 import { QueryRenderer } from 'react-relay'
 import { Environment } from './relay'
-import TodoList from './Components/TodoList'
+import TodoListApp from './Components/App'
 
 const GET_QUERY = graphql`
     query AppQuery {
@@ -62,7 +61,7 @@ function App() {
                     )
                 }}
             />
-            <TodoList />
+            <TodoListApp />
         </div>
     )
 }
