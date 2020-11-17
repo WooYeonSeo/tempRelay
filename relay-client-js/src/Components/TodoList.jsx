@@ -6,41 +6,35 @@ import { Environment } from '../relay'
 const GET_TODO_QUERY = graphql`
     query TodoListQuery {
         todoList {
-            userid,
-            totalCount,
-            data{
-                todoid,
-                text,
+            userid
+            totalCount
+            data {
+                todoid
+                text
                 complete
             }
         }
     }
 `
 
-
 function TodoList() {
-    
     return (
         <div>
-            TodoListQuery : 
+            TodoListQuery :
             <QueryRenderer
                 environment={Environment}
                 query={GET_TODO_QUERY}
                 variables={{}}
                 render={(data) => {
-                    console.log('TodoListQuery', data);
-                    const { error, props} =data;
+                    console.log('TodoListQuery', data)
+                    const { error, props } = data
                     if (error) {
                         return <div>Error!</div>
                     }
                     if (!props) {
                         return <div>Loading...</div>
                     }
-                    return (
-                        <div>
-                            SUCCESS
-                        </div>
-                    )
+                    return <div>SUCCESS</div>
                 }}
             />
         </div>

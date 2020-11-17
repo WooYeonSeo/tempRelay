@@ -26,16 +26,20 @@ export default {
         return undefined
       }
     },
-    testRelay: async (_: any, __: any): Promise<{relay : boolean } | undefined> => {
-        return { relay : true }
+    testRelay: async (_: any, __: any): Promise<{ relay: boolean } | undefined> => {
+      return { relay: true }
     },
-    testRelayParam: async (_: any, param : any): Promise<{relay : string } | undefined> => {
-      console.log("param",param)
-      return { relay : "true"+param?.id }
+    testRelayParam: async (_: any, param: any): Promise<{ relay: string } | undefined> => {
+      console.log('param', param)
+      return { relay: 'true' + param?.id }
     },
-    todo: async (_: any, param : any): Promise<{ complete : boolean , text : string } | undefined> => {
-      console.log("param",param)
-      return { complete : true , text : "text" }
+    todo: async (_: any, param: any): Promise<{ complete: boolean; text: string } | undefined> => {
+      console.log('param', param)
+      return { complete: true, text: 'text' }
+    },
+    todoList: async (_: any, param: any): Promise<{ complete: boolean; text: string } | undefined> => {
+      console.log('param', param)
+      return { complete: true, text: 'text' }
     },
   },
 }

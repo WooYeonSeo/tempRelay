@@ -3,7 +3,7 @@ import './App.css'
 import graphql from 'babel-plugin-relay/macro'
 import { QueryRenderer } from 'react-relay'
 import { Environment } from './relay'
-import TodoList from './Components/TodoList';
+import TodoList from './Components/TodoList'
 
 const GET_QUERY = graphql`
     query AppQuery {
@@ -25,46 +25,44 @@ function App() {
     const ID = '12'
     return (
         <div className="App">
-                {/* <QueryRenderer
-                    environment={Environment}
-                    query={GET_QUERY}
-                    variables={{}}
-                    render={({ error, props }) => {
-                        console.log('check2', props?.testRelay?.relay)
-                        if (error) {
-                            return <div>Error!</div>
-                        }
-                        if (!props) {
-                            return <div>Loading...</div>
-                        }
-                        return (
-                            <div>
-                                YES? : {props?.testRelay?.relay.toString()}
-                            </div>
-                        )
-                    }}
-                />
+            <QueryRenderer
+                environment={Environment}
+                query={GET_QUERY}
+                variables={{}}
+                render={({ error, props }) => {
+                    console.log('check2', props?.testRelay?.relay)
+                    if (error) {
+                        return <div>Error!</div>
+                    }
+                    if (!props) {
+                        return <div>Loading...</div>
+                    }
+                    return (
+                        <div>YES? : {props?.testRelay?.relay.toString()}</div>
+                    )
+                }}
+            />
 
-                <QueryRenderer
-                    environment={Environment}
-                    query={GET_QUERY_PARAM}
-                    variables={{ ID }}
-                    render={({ error, props }) => {
-                        console.log('check', props?.testRelay?.relay)
-                        if (error) {
-                            return <div>Error!</div>
-                        }
-                        if (!props) {
-                            return <div>Loading...</div>
-                        }
-                        return (
-                            <div>
-                                ID with param? : {props?.testRelayParam?.relay}
-                            </div>
-                        )
-                    }}
-                /> */}
-                <TodoList />
+            <QueryRenderer
+                environment={Environment}
+                query={GET_QUERY_PARAM}
+                variables={{ ID }}
+                render={({ error, props }) => {
+                    console.log('check', props?.testRelay?.relay)
+                    if (error) {
+                        return <div>Error!</div>
+                    }
+                    if (!props) {
+                        return <div>Loading...</div>
+                    }
+                    return (
+                        <div>
+                            ID with param? : {props?.testRelayParam?.relay}
+                        </div>
+                    )
+                }}
+            />
+            <TodoList />
         </div>
     )
 }
