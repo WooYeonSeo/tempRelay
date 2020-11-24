@@ -10,19 +10,20 @@
 import type { ReaderFragment } from 'relay-runtime';
 type TodoItem_item$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TodoList_todoList$ref: FragmentReference;
-declare export opaque type TodoList_todoList$fragmentType: TodoList_todoList$ref;
-export type TodoList_todoList = {|
+declare export opaque type TodoList_list$ref: FragmentReference;
+declare export opaque type TodoList_list$fragmentType: TodoList_list$ref;
+export type TodoList_list = {|
   +userid: string,
+  +totalCount: number,
   +data: ?$ReadOnlyArray<?{|
     +$fragmentRefs: TodoItem_item$ref
   |}>,
-  +$refType: TodoList_todoList$ref,
+  +$refType: TodoList_list$ref,
 |};
-export type TodoList_todoList$data = TodoList_todoList;
-export type TodoList_todoList$key = {
-  +$data?: TodoList_todoList$data,
-  +$fragmentRefs: TodoList_todoList$ref,
+export type TodoList_list$data = TodoList_list;
+export type TodoList_list$key = {
+  +$data?: TodoList_list$data,
+  +$fragmentRefs: TodoList_list$ref,
   ...
 };
 */
@@ -32,7 +33,7 @@ const node/*: ReaderFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "TodoList_todoList",
+  "name": "TodoList_list",
   "selections": [
     {
       "alias": null,
@@ -44,7 +45,14 @@ const node/*: ReaderFragment*/ = {
     {
       "alias": null,
       "args": null,
-      "concreteType": "Todo",
+      "kind": "ScalarField",
+      "name": "totalCount",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "TodoItem",
       "kind": "LinkedField",
       "name": "data",
       "plural": true,
@@ -62,6 +70,6 @@ const node/*: ReaderFragment*/ = {
   "abstractKey": null
 };
 // prettier-ignore
-(node/*: any*/).hash = '3702dd8b969911fa450c0c2c89b4ec62';
+(node/*: any*/).hash = '691863f8ea4946e78fc80dc17ed5d0f7';
 
 module.exports = node;

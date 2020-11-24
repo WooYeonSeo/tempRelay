@@ -4,15 +4,9 @@ import { Environment } from '../relay'
 import TodoList from './TodoList'
 // id 안됨@
 const GET_TODO_QUERY = graphql`
-    query AppTodoListQuery($userid: String!) {
+    query AppListQuery($userid: String!) {
         user(id: $userid) {
-            userid
-            totalCount
-            data {
-                todoid
-                text
-                complete
-            }
+            ...TodoList_list
         }
     }
 `
@@ -29,7 +23,7 @@ export default function App() {
                 variables={{ userid: ID }}
                 render={(data) => {
                     const { error, props } = data
-                    console.log('TodoListQuery', props?.todoList)
+                    console.log('TodoListQuery', props)
                     if (error) {
                         return <div>Error!</div>
                     }
@@ -38,7 +32,7 @@ export default function App() {
                     }
                     return (
                         <div>
-                            <TodoList items={props.todoList?.data} />
+                            <TodoList list={props.user} />
                             {/* <TodoItem item={props.todoList?.data} /> */}
                         </div>
                     )

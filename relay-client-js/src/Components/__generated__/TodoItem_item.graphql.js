@@ -54,10 +54,10 @@ const node/*: ReaderFragment*/ = {
       "storageKey": null
     }
   ],
-  "type": "Todo",
+  "type": "TodoItem",
   "abstractKey": null
 };
 // prettier-ignore
-(node/*: any*/).hash = '524bf2477a7c4bf91308439e18c83995';
+(node/*: any*/).hash = '1af386ccb6d4d6a6223c7ae9e2d99d4f';
 
 module.exports = node;

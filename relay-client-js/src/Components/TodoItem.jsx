@@ -3,7 +3,7 @@ import { createFragmentContainer } from 'react-relay'
 import graphql from 'babel-plugin-relay/macro'
 import React, { useEffect } from 'react'
 
-export function TodoItem({ relay, item }) {
+export function Todos({ relay, item }) {
     const ID = 'user2'
     console.log('refetch21', item)
     const _refetch = () => {
@@ -32,9 +32,9 @@ export function TodoItem({ relay, item }) {
     )
 }
 
-export default createFragmentContainer(TodoItem, {
+export default createFragmentContainer(Todos, {
     item: graphql`
-        fragment TodoItem_item on Todo {
+        fragment TodoItem_item on TodoItem {
             todoid
             text
             complete

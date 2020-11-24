@@ -1,17 +1,20 @@
 import graphql from 'babel-plugin-relay/macro'
 import TodoItem from './TodoItem'
 import { createFragmentContainer } from 'react-relay'
+import { useEffect } from 'react'
 
-function TodoList(props) {
+function TodoList({ list }) {
     const ID = 'user1'
 
+    useEffect(()=>{
+        console.log("todoList", list);
+    },[list])
     return (
         <div>
             TodoListQuery :
-            {props.todoList?.data.map((item) => {
+            {list?.data.map((item) => {
                 return <TodoItem item={item} />
             })}
-            {/* <TodoItem item={props.todoList?.data} /> */}
         </div>
     )
 }
@@ -19,13 +22,14 @@ function TodoList(props) {
 export default createFragmentContainer(TodoList, {
     // This `list` fragment corresponds to the prop named `list` that is
     // expected to be populated with server data by the `<TodoList>` component.
-    todoList: graphql`
-        fragment TodoList_todoList on TodoList {
+    list: graphql`
+        fragment TodoList_list on TodoList  {
             # Specify any fields required by '<TodoList>' itself.
-            userid
+            userid,
+            totalCount,
             # Include a reference to the fragment from the child component.
             data {
-                ...TodoItem_item
+                ...TodoItem_item 
             }
         }
     `,
