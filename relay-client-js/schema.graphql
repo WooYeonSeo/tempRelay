@@ -6,7 +6,12 @@ type Query {
     user(id: String): TodoList
     node(id: String!): TodoItem
 }
-
+type Mutation {
+    toggleRead(id: String): isRead
+}
+type isRead {
+    isRead: Boolean!
+}
 type Problem {
     id: String!
     unitCode: Int!

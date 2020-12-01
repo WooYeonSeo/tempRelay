@@ -2,10 +2,14 @@
 import { createRefetchContainer } from 'react-relay'
 import graphql from 'babel-plugin-relay/macro'
 import React, { useEffect } from 'react'
-
-export function Todos({ relay, item }) {
+import ToggleRead from './ToggleRead'
+export function Todos({ relay, item }, env) {
     const ID = 'user2'
 
+    useEffect(() => {
+        ToggleRead(relay.environment, 'id1')
+        console.log('???ToggleRead')
+    }, [relay.environment])
     const _refetch = () => {
         relay?.refetch(
             { itemID: ID }, // Our refetchQuery needs to know the `itemID`
