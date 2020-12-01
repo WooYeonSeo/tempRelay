@@ -6,7 +6,7 @@ import TodoList from './TodoList'
 const GET_TODO_QUERY = graphql`
     query AppListQuery($userid: String!) {
         user(id: $userid) {
-            ...TodoList_list
+            ...TodoList_list @arguments(userName: $userid) # Pass arguments here
         }
     }
 `

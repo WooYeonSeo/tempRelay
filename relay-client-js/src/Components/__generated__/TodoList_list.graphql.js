@@ -30,7 +30,13 @@ export type TodoList_list$key = {
 
 
 const node/*: ReaderFragment*/ = {
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "defaultValue": "안녕!",
+      "kind": "LocalArgument",
+      "name": "userName"
+    }
+  ],
   "kind": "Fragment",
   "metadata": null,
   "name": "TodoList_list",
@@ -70,6 +76,6 @@ const node/*: ReaderFragment*/ = {
   "abstractKey": null
 };
 // prettier-ignore
-(node/*: any*/).hash = '691863f8ea4946e78fc80dc17ed5d0f7';
+(node/*: any*/).hash = '290fd40da439c9d48e484f99a5eb3ae9';
 
 module.exports = node;

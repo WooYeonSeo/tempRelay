@@ -1,26 +1,22 @@
 // TodoItem.js
-import { createFragmentContainer } from 'react-relay'
+import { createRefetchContainer } from 'react-relay'
 import graphql from 'babel-plugin-relay/macro'
 import React, { useEffect } from 'react'
 
 export function Todos({ relay, item }) {
     const ID = 'user2'
-    console.log('refetch21', item)
+
     const _refetch = () => {
-        console.log('refetch21', item)
         relay?.refetch(
             { itemID: ID }, // Our refetchQuery needs to know the `itemID`
             null, // We can use the refetchVariables as renderVariables
-            () => {
-                console.log('Refetch done')
+            (data) => {
+                console.log('Refetch done', data)
             },
             { force: true } // Assuming we've configured a network layer cache, we want to ensure we fetch the latest data.
         )
     }
 
-    useEffect(() => {
-        console.log('props', item)
-    })
     return (
         <>
             <div>
@@ -32,12 +28,22 @@ export function Todos({ relay, item }) {
     )
 }
 
-export default createFragmentContainer(Todos, {
-    item: graphql`
-        fragment TodoItem_item on TodoItem {
-            todoid
-            text
-            complete
+export default createRefetchContainer(
+    Todos,
+    {
+        item: graphql`
+            fragment TodoItem_item on TodoItem {
+                todoid
+                text
+                complete
+            }
+        `,
+    },
+    graphql`
+        query TodoItemRefetchQuery($itemID: String!) {
+            item: node(id: $itemID) {
+                ...TodoItem_item
+            } #  https://github.com/facebook/relay/issues/2244
         }
-    `,
-})
+    `
+)

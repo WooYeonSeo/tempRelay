@@ -29,7 +29,6 @@ function App() {
                 query={GET_QUERY}
                 variables={{}}
                 render={({ error, props }) => {
-                    console.log('check2', props?.testRelay?.relay)
                     if (error) {
                         return <div>Error!</div>
                     }
@@ -47,7 +46,6 @@ function App() {
                 query={GET_QUERY_PARAM}
                 variables={{ ID }}
                 render={({ error, props }) => {
-                    console.log('check', props?.testRelay?.relay)
                     if (error) {
                         return <div>Error!</div>
                     }

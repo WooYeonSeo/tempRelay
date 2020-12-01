@@ -29,7 +29,7 @@ query AppListQuery(
   $userid: String!
 ) {
   user(id: $userid) {
-    ...TodoList_list
+    ...TodoList_list_86CDk
   }
 }
 
@@ -39,7 +39,7 @@ fragment TodoItem_item on TodoItem {
   complete
 }
 
-fragment TodoList_list on TodoList {
+fragment TodoList_list_86CDk on TodoList {
   userid
   totalCount
   data {
@@ -79,7 +79,13 @@ return {
         "plural": false,
         "selections": [
           {
-            "args": null,
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "userName",
+                "variableName": "userid"
+              }
+            ],
             "kind": "FragmentSpread",
             "name": "TodoList_list"
           }
@@ -156,16 +162,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c7448cdc08f8ee33baecb9f1fc939914",
+    "cacheID": "abfb798c2b575ec59dc862fa7a53053a",
     "id": null,
     "metadata": {},
     "name": "AppListQuery",
     "operationKind": "query",
-    "text": "query AppListQuery(\n  $userid: String!\n) {\n  user(id: $userid) {\n    ...TodoList_list\n  }\n}\n\nfragment TodoItem_item on TodoItem {\n  todoid\n  text\n  complete\n}\n\nfragment TodoList_list on TodoList {\n  userid\n  totalCount\n  data {\n    ...TodoItem_item\n  }\n}\n"
+    "text": "query AppListQuery(\n  $userid: String!\n) {\n  user(id: $userid) {\n    ...TodoList_list_86CDk\n  }\n}\n\nfragment TodoItem_item on TodoItem {\n  todoid\n  text\n  complete\n}\n\nfragment TodoList_list_86CDk on TodoList {\n  userid\n  totalCount\n  data {\n    ...TodoItem_item\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '34c3d478bfe5d886dec526fce5282a3d';
+(node/*: any*/).hash = 'a886e538dc450363598da27285a7b786';
 
 module.exports = node;

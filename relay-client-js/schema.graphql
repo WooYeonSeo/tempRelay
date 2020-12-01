@@ -3,8 +3,8 @@ type Query {
     feSimilars: [Problem!]!
     testRelay: Relay!
     testRelayParam(id: String): RelayString!
-    todo: TODO
     user(id: String): TodoList
+    node(id: String!): TodoItem
 }
 
 type Problem {
@@ -36,19 +36,14 @@ type RelayString {
     relay: String
 }
 
-type TODO {
-    complete: Boolean
-    text: String
+type TodoItem {
+    todoid: Int!
+    text: String!
+    complete: Boolean!
 }
 
 type TodoList {
     userid: String!
     totalCount: Int!
-    data: [Todo]
-}
-
-type Todo {
-    todoid: Int!
-    text: String!
-    complete: Boolean!
+    data: [TodoItem]
 }
